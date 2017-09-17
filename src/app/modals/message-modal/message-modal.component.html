@@ -1,0 +1,68 @@
+<!-- Modal -->
+<div class="modal fade" id="message" tabindex="-1" aria-labelledby="myModalLabel">
+  <div class="modal-dialog custom-modal" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title" id="myModalLabel">Добавление/редактирование {{messageStateName}}</h4>
+      </div>
+      <div class="modal-body">
+        <div class="container-fluid">
+          <div class="row">
+            <div class="col-md-4">
+              <div class="card" style="box-shadow: none;">
+                <div class="header">
+                  <h5 class="title">Изображение</h5>
+                </div>
+                <div>
+                  <img style="max-width: 100%" *ngIf="messageBody.value.images" [src]="messageBody.value.images[0].image"/>
+                  <div class="col-md-12 input-wrapper content text-center">
+                    <span class="btn btn-rose btn-round btn-file">
+                        <span class="fileinput-new">Выбрать</span>
+                        <input type="file" (change)="upLoadBackground($event, 'bgResult')">
+                    </span>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="col-lg-8 col-md-7">
+              <div class="content">
+                <form [formGroup]="messageBody">
+                  <div class="row">
+                    <div class="col-md-12">
+                      <div class="form-group">
+                        <h5>Название</h5>
+                        <input type="text" formControlName="title" class="form-control border-input"
+                               placeholder="Пример заголовка.">
+                      </div>
+                    </div>
+                  </div>
+                  <div class="row">
+                    <div class="col-md-12">
+                      <div class="form-group">
+                        <label>Описание</label>
+                        <textarea formControlName="body" class="form-control border-input" rows="5"></textarea>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="row">
+                    <div class="col-md-12">
+                      <div class="form-group">
+                        <label>Автор</label>
+                        <textarea formControlName="author" class="form-control border-input" rows="5"></textarea>
+                      </div>
+                    </div>
+                  </div>
+                </form>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Отменить</button>
+        <button type="button" class="btn btn-success" data-dismiss="modal" [disabled]="!messageBody.valid" (click)="buttonAccept()">Принять</button>
+      </div>
+    </div>
+  </div>
+</div>

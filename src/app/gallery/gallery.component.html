@@ -1,0 +1,46 @@
+<div class="col-md-12">
+    <div class="card">
+        <div class="card-header row">
+            <div class="col-md-6">
+                <h4 class="card-title">{{messageName}}</h4>
+                <p class="category">Здесь Вы можете добавлять/удалять и редактировать {{messageName}}.</p>
+            </div>
+            <div class="col-md-6">
+                <add-message [message]="messageName"></add-message>
+            </div>
+
+        </div>
+        <div class="card-content table-responsive table-full-width">
+            <table class="table">
+                <thead>
+                <tr>
+                    <th>Заголовок</th>
+                    <th>Картинка</th>
+                    <th>Содержание</th>
+                    <th>Время</th>
+                    <th>Автор</th>
+                    <th class="text-right">Опции</th>
+                </tr>
+                </thead>
+                <tbody>
+                <!---->
+                <tr *ngFor="let message of message$ | async">
+                    <td>{{message.title}}</td>
+                    <td class="image-75px">
+                        <div class="image-table">
+                            <img *ngFor="let image of message.images" [src]="image | async">
+                        </div>
+                    </td>
+                    <td>{{message.body}}</td>
+                    <td>{{message.date}}</td>
+                    <td>{{message.author}}</td>
+                    <td class="td-actions text-right">
+                        <options [id]="message._id" [message]="messageName"></options>
+                    </td>
+                </tr>
+                <!---->
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>

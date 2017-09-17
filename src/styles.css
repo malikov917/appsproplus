@@ -1,0 +1,108 @@
+.form-group input.ng-valid {
+    border-left: 5px solid #42A948; /* green */
+    transition: 0.2s;
+}
+
+.form-group textarea.ng-valid {
+    border-left: 5px solid #42A948; /* green */
+    transition: 0.2s;
+}
+
+.form-group input.ng-invalid  {
+    border-left: 5px solid #a94442; /* red */
+    transition: 0.2s;
+}
+
+.form-group textarea.ng-invalid  {
+    border-left: 5px solid #a94442; /* red */
+    transition: 0.2s;
+}
+
+.btn-file > input {
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 100%;
+    height: 100%;
+    margin: 0;
+    font-size: 23px;
+    cursor: pointer;
+    filter: alpha(opacity=0);
+    opacity: 0;
+    direction: ltr;
+}
+
+.input-wrapper {
+    position: relative;
+}
+
+.custom-modal {
+    margin: 30px;
+    width: auto;
+}
+
+.custom-disabled:not {
+    background-color: #E3E3E3;
+    cursor: not-allowed;
+    color: #9A9A9A;
+    opacity: 1;
+    filter: alpha(opacity=100);
+}
+
+.card-header {
+    padding: 20px 15px 0px;
+    position: relative;
+    border-radius: 3px 3px 0 0;
+    z-index: 3;
+}
+
+.td-number {
+    color: #484541;
+    font-weight: 600;
+    font-size: 1.2em;
+    min-width: 130px;
+    text-align: right;
+    padding-right: 20px;
+}
+
+.card-content {
+    padding: 15px 15px 10px 15px;
+}
+
+.image-75px {
+    width: 200px;
+}
+
+.image-table {
+    overflow: hidden;
+    border-radius: 6px 6px 0 0;
+    position: relative;
+    -webkit-transform-style: preserve-3d;
+    -moz-transform-style: preserve-3d;
+    transform-style: preserve-3d;
+}
+
+.image-table img {
+    width: 100%;
+}
+
+.card-title {
+    margin: 0;
+    color: #252422;
+    font-weight: 300;
+}
+
+.ul-gallery li {
+    transition: 200ms;
+    padding-left: 10px !important;
+}
+
+.ul-gallery li.active {
+    color: #fff;
+    background-color: #42A948;
+}
+
+.ul-gallery li:hover {
+    color: #fff;
+    background-color: #68B3C8;
+}

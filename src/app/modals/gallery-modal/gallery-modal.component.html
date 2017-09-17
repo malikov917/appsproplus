@@ -1,0 +1,40 @@
+<!-- Modal -->
+<div class="modal fade" id="galleryModal" tabindex="-1"  aria-labelledby="myModalLabel">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title" id="myModalLabel">Добавить изображение</h4>
+      </div>
+      <div class="modal-body">
+        <div class="container-fluid">
+          <div class="row">
+            <div class="col-md-12">
+              <div class="card" style="box-shadow: none;">
+                <div class="header">
+                  <div class="col-md-6">
+                      <h5 class="title">Изображение</h5>
+                  </div>
+                  <div class="col-md-6 input-wrapper text-right">
+                    <span class="btn btn-success btn-file">
+                        <span class="fileinput-new">Выбрать</span>
+                        <input type="file" name="..." (change)="upLoadBackground($event, 'bgResult')">
+                    </span>
+                  </div>
+                </div>
+                <div class="text-center">
+                  <img *ngIf="!bgResult" [src]="nophoto" alt="..."/>
+                  <img style="max-width: 540px;" *ngIf="bgResult" [src]="bgResult" alt="..."/>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Отменить</button>
+        <button type="button" class="btn btn-success" data-dismiss="modal">Добавить</button>
+      </div>
+    </div>
+  </div>
+</div>

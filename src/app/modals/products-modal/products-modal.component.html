@@ -1,0 +1,92 @@
+<!-- Modal -->
+<div class="modal fade" id="productModal" tabindex="-1" aria-labelledby="myModalLabel">
+  <div class="modal-dialog custom-modal" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
+            aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title" id="myModalLabel">Добавление/редактирование продукта</h4>
+      </div>
+      <div class="modal-body">
+        <form [formGroup]=form>
+          <div class="container-fluid">
+            <div class="row">
+              <div class="col-md-4">
+                <div class="card" style="box-shadow: none;">
+                  <div class="header">
+                    <h5 class="title">Изображение</h5>
+                  </div>
+                  <div>
+                    <img style="max-width: 100%" *ngIf="!bgResult" [src]="nophoto" alt="..."/>
+                    <img style="max-width: 100%" *ngIf="bgResult" [src]="bgResult" alt="..."/>
+                    <div class="col-md-12 input-wrapper content text-center">
+                      <span class="btn btn-rose btn-round btn-file">
+                          <span class="fileinput-new">Выбрать</span>
+                          <input type="file" (change)="upLoadBackground($event, 'bgResult')">
+                      </span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="col-lg-8 col-md-7">
+                <div class="content">
+                  <div class="row">
+                    <div class="col-md-7">
+                      <div class="form-group">
+                        <h5>Название</h5>
+                        <input type="text" formControlName="title" class="form-control border-input"
+                               placeholder="Название продукта.">
+                      </div>
+                    </div>
+                    <div class="col-md-3" (click)="getCategories()">
+                      Выбрать категорию
+                      <select formControlName="category">
+                        <option value="{{option.category}}" *ngFor="let option of categories$ | async">{{option.category}}</option>
+                      </select>
+                    </div>
+                    <div class="col-md-2">
+                      <div class="form-group">
+                        <h5>Цена</h5>
+                        <input type="number" formControlName="price" class="form-control border-input"
+                               placeholder="Только значение, без валюты">
+                      </div>
+                    </div>
+                  </div>
+                  <div class="row">
+                    <div class="col-md-12">
+                      <div class="form-group">
+                        <label>Описание</label>
+                        <textarea formControlName="description" class="form-control border-input" rows="5"></textarea>
+                      </div>
+                    </div>
+                  </div>
+                    <div class="row">
+                      <div class="col-md-12">
+                        <label>Параметры продукта</label>
+                        <a class="btn" style="border-radius: 4px; padding: 0 6px; cursor: pointer;" (click)="addOption()">+</a>
+                        <div class="row" style="margin-bottom: 1px" *ngFor="let option of options; let index = index">
+                          <div class="col-md-5">
+                            <input type="text" class="form-control border-input" placeholder="Опция">
+                          </div>
+                          <div class="col-md-6">
+                            <input type="text" class="form-control border-input" placeholder="Описание">
+                          </div>
+                          <div class="col-md-1">
+                            <a href="#" class="btn btn-danger" data-toggle="dropdown" style="border-radius: 4px;" (click)="deleteOption(index)">-</a>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Отменить</button>
+        <button type="button" class="btn btn-success" data-dismiss="modal" [disabled]="!form.valid" (click)="buttonAccept()">Принять</button>
+      </div>
+    </div>
+  </div>
+</div>

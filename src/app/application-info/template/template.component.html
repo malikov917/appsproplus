@@ -1,0 +1,24 @@
+<div class="card">
+  <div class="header">
+    <h4 class="title">{{title}}</h4>
+  </div>
+  <div class="col-md-5">
+    <div class="card card-user" style="box-shadow: none;">
+      <div class="image-table"
+           style="box-shadow: none; height: 275px; width: 220px; border-radius: 8px 8px;">
+        <img [src]="layoutSrc">
+      </div>
+    </div>
+  </div>
+  <div class="col-md-6">
+    <ul class="list-unstyled team-members ul-gallery"
+        (mouseleave)="layoutSrc = layoutArray[layoutAcceptedNum]">
+      <li *ngFor="let layoutSrc of layoutArray; let index = index"
+          (mouseenter)="design(layoutSrc, index)"
+          (click)="design(layoutSrc, index, 'clicked')"
+          [ngClass]="{'active': layoutAcceptedNum == index}">{{layoutNames[index]}}
+      </li>
+    </ul>
+  </div>
+  <div class="clearfix"></div>
+</div>

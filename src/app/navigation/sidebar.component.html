@@ -1,0 +1,44 @@
+
+<div class="sidebar-wrapper">
+    <div class="logo">
+        <a href="/" class="simple-text">
+            <div class="logo-img">
+                <img src="../../assets/img/angular2-logo.png" alt="">
+            </div>
+            APPSPROPLUS
+        </a>
+    </div>
+    <ul class="nav">
+            <li *ngIf="isNotMobileMenu()">
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                    <i class="ti-panel"></i>
+					<p>Stats</p>
+                </a>
+            </li>
+            <li class="dropdown" *ngIf="isNotMobileMenu()">
+                  <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                        <i class="ti-world"></i>
+    					<p>{{ 'ENTER' | translation }}</p>
+    					<b class="caret"></b>
+                  </a>
+                  <ul class="dropdown-menu">
+                    <li><a (click)="setLanguage('ru')">Русский</a></li>
+                    <li><a (click)="setLanguage('en')">English</a></li>
+                    <li><a (click)="setLanguage('fr')">Français</a></li>
+                  </ul>
+            </li>
+            <li *ngIf="isNotMobileMenu()">
+                <a href="#">
+					<i class="ti-settings"></i>
+					<p>Settings</p>
+                </a>
+            </li>
+            <li class="divider" *ngIf="isNotMobileMenu()"></li>
+        <li *ngFor="let menuItem of menuItems" routerLinkActive="active">
+            <a [routerLink]="[menuItem.path]">
+                <i class="{{menuItem.icon}}"></i>
+                <p>{{menuItem.title | translation}}</p>
+            </a>
+        </li>
+    </ul>
+</div>

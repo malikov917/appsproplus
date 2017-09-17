@@ -1,0 +1,156 @@
+<form [formGroup]="form">
+    <div class="col-lg-4 col-md-5">
+        <div class="card card-user">
+            <div class="image" [ngClass]="{'hovered': hoveredBG}">
+                <img *ngIf="!bgResult" [src]="form.value['backgroud']"/>
+                <img *ngIf="bgResult" [src]="bgResult"/>
+            </div>
+            <div class="content">
+                <div class="author">
+                    <img *ngIf="!iconResult" class="avatar border-white" [ngClass]="{'hovered': hoveredIcon}"
+                         [src]="form.value['logo']"/>
+                    <img *ngIf="iconResult" class="avatar border-white" [ngClass]="{'hovered': hoveredIcon}"
+                         [src]="iconResult"/>
+                    <h4 class="title">{{form.value['title']}}<br/>
+                        <br>
+                    </h4>
+                </div>
+
+                <div class="col-md-6 input-wrapper text-center" (mouseenter)="hovered(true, 'hoveredBG')"
+                     (mouseleave)="hovered(false, 'hoveredBG')">
+                    <span class="btn btn-rose btn-round btn-file">
+                        <span class="fileinput-new">Фон</span>
+                        <input type="file" (change)="upLoadBackground($event, 'bgResult')">
+                    </span>
+                </div>
+
+                <div class="col-md-6 input-wrapper text-center" (mouseenter)="hovered(true, 'hoveredIcon')"
+                     (mouseleave)="hovered(false, 'hoveredIcon')">
+                    <span class="btn btn-rose btn-round btn-file">
+                        <span class="fileinput-new">Иконка</span>
+                        <input type="file" (change)="upLoadBackground($event, 'iconResult')">
+                    </span>
+                </div>
+
+            </div>
+            <hr>
+            <div class="text-center">
+                <div class="row">
+                    <div class="col-md-3 col-md-offset-1">
+                        <h5>{{form.value['currency']}}<br/>
+                            <small>Денежная еденица</small>
+                        </h5>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!--<div class="card">
+            <div class="header">
+                <label>Разделы приложения</label>
+                <a class="btn" style="border-radius: 4px; padding: 0 6px; cursor: pointer;" (click)="addOption()">+</a>
+            </div>
+            <div formArrayName="menuitems" class="content row" style="margin-bottom: 1px" *ngFor="let item of form.value.menuitems; let i = index">
+                <div class="col-md-5" [formGroupName]="item">
+                    <input type="text"  class="form-control border-input" [formControl]="i" >
+                </div>
+                <div class="col-md-1">
+                    <a href="#" class="btn btn-danger" data-toggle="dropdown" style="border-radius: 4px;" (click)="deleteOption(i)">-</a>
+                </div>
+
+            </div>
+            <div class="clearfix"></div>
+        </div>-->
+        <div class="card">
+            <div class="header">
+                <h4 class="title">Разделы приложения</h4>
+            </div>
+            <div class="content">
+                <ul class="list-unstyled team-members">
+                    <li *ngFor="let item of form.value.menuitems">
+                        <div class="row">
+                            <div class="col-xs-6">
+                                {{item}}
+                                <br/>
+                            </div>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <div class="col-lg-8 col-md-7">
+        <div class="card">
+            <div class="header">
+                <h4 class="title">Информация о приложении</h4>
+            </div>
+            <div class="content">
+                <div class="row">
+                    <div class="col-md-3">
+                        <div class="form-group">
+                            <label>Уникальное имя</label>
+                            <input type="text" class="form-control border-input" disabled
+                                   placeholder="Ваше уникальное имя" [value]="form.value.store">
+                        </div>
+                    </div>
+                    <div class="col-md-5">
+                        <div class="form-group">
+                            <label>Название приложения</label>
+                            <input type="text" class="form-control border-input"
+                                   formControlName="title" placeholder="Доставка кофе">
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="form-group">
+                            <label>Ваш почтовый ящик</label>
+                            <input type="email" ngModel email class="form-control border-input"
+                                   formControlName="email" placeholder="example@gmail.com">
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label>Имя владельца</label>
+                            <input type="text" class="form-control border-input"
+                                   formControlName="firstname" placeholder="Иван">
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label>Фамилия владельца</label>
+                            <input type="text" class="form-control border-input"
+                                   formControlName="lastname" placeholder="Васильевич">
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-md-4">
+                        <div class="form-group">
+                            <label>Номер телефона</label>
+                            <input type="tel" class="form-control border-input"
+                                   formControlName="phone" placeholder="+375">
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="form-group">
+                            <label>Денежная еденица</label>
+                            <input type="text" class="form-control border-input"
+                                   formControlName="currency" placeholder="BYN">
+                        </div>
+                    </div>
+                </div>
+                <div class="text-center">
+                    <button type="submit" class="btn btn-info btn-fill btn-wd"
+                            [disabled]="!form.valid" (click)="onFormSubmit()">Обновить информацию
+                    </button>
+                </div>
+                <div class="clearfix"></div>
+            </div>
+        </div>
+        <app-template *ngIf="form" [form]="form" [formField]="'colorscheme'" [layoutArray]="colorArray" [layoutNames]="colorNames" [title]="'Выбор цвета'"></app-template>
+        <app-template *ngIf="form" [form]="form" [formField]="'iconpack'" [layoutArray]="iconArray" [layoutNames]="iconNames" [title]="'Выбор иконок'"></app-template>
+        <app-template *ngIf="form" [form]="form" [formField]="'layout'" [layoutArray]="templateArray" [layoutNames]="templateNames" [title]="'Выбор шаблона'"></app-template>
+    </div>
+</form>

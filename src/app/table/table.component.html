@@ -1,0 +1,53 @@
+<div class="col-md-12">
+    <div class="row ng-dirty ng-touched ng-valid" [formGroup]="form">
+        <div class="col-md-4">
+            <div class="form-group">
+                <label>Логин</label>
+                <input class="form-control border-input"
+                       placeholder="Логин" required type="text"
+                       formControlName="login">
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="form-group">
+                <label>Пароль</label>
+                <input class="form-control border-input"
+                       placeholder="Пароль" required type="password"
+                       formControlName="password">
+            </div>
+        </div>
+        <div class="col-md-4">
+            <label>Пароль</label>
+            <div class="form-group">
+                <button class="btn btn-info btn-fill btn-wd"
+                        [disabled]="!submitBool" (click)="onFormSubmit()">Зарегистрировать пользователя
+                </button>
+            </div>
+        </div>
+    </div>
+    <div class="card">
+        <div class="header">
+            <h4 class="title">Все пользователи</h4>
+            <p class="category">Отображена краткая информация о пользователях moko сервиса</p>
+        </div>
+        <div class="content table-responsive table-full-width">
+            <table class="table table-striped">
+                <thead>
+                <tr>
+                    <th>active</th>
+                    <th>email</th>
+                    <th>login</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr *ngFor="let item of users$ | async">
+                    <td>{{item.active}}</td>
+                    <td>{{item.email}}</td>
+                    <td>{{item.login}}</td>
+                </tr>
+                </tbody>
+            </table>
+
+        </div>
+    </div>
+</div>

@@ -1,0 +1,25 @@
+.card-header {
+    padding: 20px 15px 0px;
+    position: relative;
+    border-radius: 3px 3px 0 0;
+    z-index: 3;
+}
+
+.td-number {
+    color: #484541;
+    font-weight: 600;
+    font-size: 1.2em;
+    min-width: 130px;
+    text-align: right;
+    padding-right: 20px;
+}
+
+.card-content {
+    padding: 15px 15px 10px 15px;
+}
+
+.card-title {
+    margin: 0;
+    color: #252422;
+    font-weight: 300;
+}
